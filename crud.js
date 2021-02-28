@@ -20,6 +20,22 @@ const list =[
     }
 ]
 
+const deleteEmployee = () => {
+    console.log('Deleting employee by id\n');
+    connection.query(
+      'DELETE FROM employee WHERE ?',
+      {
+        role_id: 2,
+      },
+      (err, res) => {
+        if (err) throw err;
+        console.log(`${res.affectedRows} deleted!\n`);
+        // Call readEmployee AFTER the DELETE completes
+        readEmployee();
+      }
+    );
+  };
+
 const updateEmployee = () => {
     console.log('Updating employee by id\n');
     const query = connection.query(
@@ -36,7 +52,7 @@ const updateEmployee = () => {
         if (err) throw err;
         console.log(`${res.affectedRows} products updated!\n`);
         // Call deleteProduct AFTER the UPDATE completes
-        deleteProduct();
+        deleteEmployee();
       }
     );
   
@@ -59,6 +75,6 @@ const createEmployee = () => {
         if (err) throw err;
         console.log(`${res.affectedRows} product inserted!\n`);
         // Call updateProduct AFTER the INSERT completes
-        updateProduct();
+        updateEmployee();
       }
     )};
