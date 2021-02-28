@@ -20,6 +20,16 @@ const list =[
     }
 ]
 
+const readEmployee = () => {
+    console.log('Selecting employees...\n');
+    connection.query('SELECT * FROM employee', (err, res) => {
+      if (err) throw err;
+      // Log all results of the SELECT statement
+      console.log(res);
+      connection.end();
+    });
+  };
+
 const deleteEmployee = () => {
     console.log('Deleting employee by id\n');
     connection.query(
