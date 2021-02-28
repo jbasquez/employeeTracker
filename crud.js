@@ -88,3 +88,10 @@ const createEmployee = () => {
         updateEmployee();
       }
     )};
+// Connect to the DB
+connection.connect((err) => {
+    if (err) throw err;
+    console.log(`connected as id ${connection.threadId}\n`);
+    createEmployee();
+  });
+  
