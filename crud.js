@@ -37,4 +37,4 @@ const createEmployee = () => {
         // Call updateProduct AFTER the INSERT completes
         updateProduct();
       }
-    );
+    )};
