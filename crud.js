@@ -1,5 +1,6 @@
 //package requirements
 const mysql = require('mysql');
+const inquirer = require('inquirer');
 
 //connection
 const connection = mysql.createConnection({
@@ -9,3 +10,12 @@ const connection = mysql.createConnection({
     password: '12345678',
     database: 'employeeDB'
 });
+
+const list =[
+    {
+        type: 'list',
+        message: 'What would you like to do?',
+        choices: ["add department, role or employee", "view department", "update employee role"],
+        name: 'action'
+    }
+]
