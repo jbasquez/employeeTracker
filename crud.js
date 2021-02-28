@@ -20,13 +20,37 @@ const list =[
     }
 ]
 
+const updateEmployee = () => {
+    console.log('Updating employee by id\n');
+    const query = connection.query(
+      'UPDATE employee SET ? WHERE ?',
+      [
+        {
+          role_id: 50,
+        },
+        {
+          first_name: 'Rocky',
+        },
+      ],
+      (err, res) => {
+        if (err) throw err;
+        console.log(`${res.affectedRows} products updated!\n`);
+        // Call deleteProduct AFTER the UPDATE completes
+        deleteProduct();
+      }
+    );
+  
+    // logs the actual query being run
+    console.log(query.sql);
+  };
+
 const createEmployee = () => {
     console.log('Creating new employee \n');
     const query = connection.query(
         //
       'INSERT INTO employee SET ?',
       {
-        first_name: 'Rocky Road',
+        first_name: 'jack',
         last_name: 'Rocky',
         role_id: 50,
         manager_id: 50
