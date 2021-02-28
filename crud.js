@@ -19,3 +19,22 @@ const list =[
         name: 'action'
     }
 ]
+
+const createEmployee = () => {
+    console.log('Creating new employee \n');
+    const query = connection.query(
+        //
+      'INSERT INTO employee SET ?',
+      {
+        first_name: 'Rocky Road',
+        last_name: 'Rocky',
+        role_id: 50,
+        manager_id: 50
+      },
+      (err, res) => {
+        if (err) throw err;
+        console.log(`${res.affectedRows} product inserted!\n`);
+        // Call updateProduct AFTER the INSERT completes
+        updateProduct();
+      }
+    );
