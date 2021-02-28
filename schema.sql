@@ -9,4 +9,11 @@ CREATE TABLE department (
   PRIMARY KEY (position)
 );
 
+CREATE TABLE role (
+  id INT NOT NULL AUTO_INCREMENT,
+  title VARCHAR(100) NULL,
+  salary Decimal(10,2)
+);
+
+
 SELECT * FROM top5000;

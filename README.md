@@ -19,7 +19,7 @@ Design the following database schema containing three tables:
   * **id** - INT PRIMARY KEY
   * **title** -  VARCHAR(30) to hold role title
   * **salary** -  DECIMAL to hold role salary
-  * **department_id** -  INT to hold reference to department role belongs to
+  //* **department_id** -  INT to hold reference to department role belongs to
 
 * **employee**:
 
