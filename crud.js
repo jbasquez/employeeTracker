@@ -5,20 +5,26 @@ const inquirer = require('inquirer');
 //connection
 const connection = mysql.createConnection({
     host: 'localhost',
-    port: 8888,
+    port: 8080,
     user: 'root',
     password: '12345678',
     database: 'employeeDB'
 });
 
-const list =[
-    {
-        type: 'list',
-        message: 'What would you like to do?',
-        choices: ["add department, role or employee", "view department", "update employee role"],
-        name: 'action'
-    }
-]
+function init() {
+  const list =[
+      {
+          type: 'list',
+          message: 'What would you like to do?',
+          choices: ["add department", "add role", "add employee", "view department", "update employee role"],
+          name: 'action'
+      }
+  ]
+  console.clear();
+  inquirer
+    .prompt()
+}
+
 
 const readEmployee = () => {
     console.log('Selecting employees...\n');
