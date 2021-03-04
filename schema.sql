@@ -23,4 +23,4 @@ CREATE TABLE employee (
     primary key (id)
 )
 
-SELECT * FROM top5000;
+SELECT * FROM employee;
