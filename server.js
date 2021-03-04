@@ -113,9 +113,35 @@ const createEmployee = () => {
         name: 'lastName',
         type: 'input',
         message: 'What is your last name'
+      },
+      {
+        name: 'roleId',
+        type: 'number',
+       message: 'What is your role(number)?'
+      },
+      {
+        name: 'managerId',
+        type: 'number',
+        message: 'What is your manager Id number?'
       }
-    
     ])
+    .then((answer) => {
+      connection.query(
+        'INSERT INTO employee SET ?',
+        {
+          first_name: firstName,
+          last_name: lastName,
+          role_id: roleId,
+          manager_id: managerId,
+        },
+        (err) => {
+          if (err) throw err;
+          console.log('You have been added to the employee database');
+          // re-prompt the user for if they want to do anything else
+          init();
+        }
+      )
+    })
 }
 // {
 //     console.log('Creating new employee \n');
