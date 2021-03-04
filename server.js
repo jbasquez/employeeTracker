@@ -38,6 +38,7 @@ function init() {
       }
       else if (response.action === "add employee") {
         console.log("Hey add employee");
+        createEmployee();
       }
       else if (response.action === "view department") {
         console.log("Hey add view department");
@@ -100,7 +101,23 @@ function init() {
 //     console.log(query.sql);
 //   };
 
-// const createEmployee = () => {
+const createEmployee = () => {
+  inquirer
+    .prompt([
+      {
+        name: 'firstName',
+        type: 'input',
+        message: 'What is your first name'
+      },
+      {
+        name: 'lastName',
+        type: 'input',
+        message: 'What is your last name'
+      }
+    
+    ])
+}
+// {
 //     console.log('Creating new employee \n');
 //     const query = connection.query(
 //         //
