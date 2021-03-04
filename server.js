@@ -5,7 +5,7 @@ const inquirer = require('inquirer');
 //connection
 const connection = mysql.createConnection({
     host: 'localhost',
-    port: 8080,
+    port: 3306,
     user: 'root',
     password: '12345678',
     database: 'employeeDB'
