@@ -1,7 +1,7 @@
 DROP DATABASE IF EXISTS employeeDB;
 CREATE database employeeDB;
 
-USE epmloyeeDB;
+USE employeeDB;
 
 CREATE TABLE department (
   id INT NOT NULL AUTO_INCREMENT,
