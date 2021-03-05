@@ -44,6 +44,7 @@ function init() {
       }
       else if (response.action === "view department") {
         console.log("Hey add view department");
+        viewDepartment();
       }
       else if(response.action=== "update employee role"){
         console.log("Hey add a employee role")
@@ -53,15 +54,15 @@ function init() {
   };
 
 
-// const readEmployee = () => {
-//     console.log('Selecting employees...\n');
-//     connection.query('SELECT * FROM employee', (err, res) => {
-//       if (err) throw err;
-//       // Log all results of the SELECT statement
-//       console.log(res);
-//       connection.end();
-//     });
-//   };
+const viewDepartment = () => {
+    console.log('Selecting employees...\n');
+    connection.query('SELECT * FROM department', (err, res) => {
+      if (err) throw err;
+      // Log all results of the SELECT statement
+      console.log(res);
+      connection.end();
+    });
+  };
 
 // const deleteEmployee = () => {
 //     console.log('Deleting employee by id\n');
