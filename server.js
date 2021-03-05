@@ -55,7 +55,7 @@ function init() {
 
 
 const viewDepartment = () => {
-    console.log('Selecting employees...\n');
+    console.log('Selecting departments...\n');
     connection.query('SELECT * FROM department', (err, res) => {
       if (err) throw err;
       // Log all results of the SELECT statement
@@ -80,29 +80,37 @@ const viewDepartment = () => {
 //     );
 //   };
 
-// const updateEmployee = () => {
-//     console.log('Updating employee by id\n');
-//     const query = connection.query(
-//       'UPDATE employee SET ? WHERE ?',
-//       [
-//         {
-//           role_id: 50,
-//         },
-//         {
-//           first_name: 'Rocky',
-//         },
-//       ],
-//       (err, res) => {
-//         if (err) throw err;
-//         console.log(`${res.affectedRows} products updated!\n`);
-//         // Call deleteProduct AFTER the UPDATE completes
-//         deleteEmployee();
-//       }
-//     );
+const updateEmployee = () => {
+    console.log('Updating employee by id\n');
+    inquirer
+      .prompt([
+        {
+          name: 'roleId',
+          type: 'input',
+          message: 'What is the role id of who you would like to update?'
+        }
+      ])
+    const query = connection.query(
+      'UPDATE employee SET ? WHERE ?',
+      [
+        {
+          role_id: 50,
+        },
+        {
+          first_name: 'Rocky',
+        },
+      ],
+      (err, res) => {
+        if (err) throw err;
+        console.log(`${res.affectedRows} products updated!\n`);
+        // Call deleteProduct AFTER the UPDATE completes
+        deleteEmployee();
+      }
+    );
   
-//     // logs the actual query being run
-//     console.log(query.sql);
-//   };
+    // logs the actual query being run
+    console.log(query.sql);
+  };
 
 const addRole = ()=> {
   inquirer
@@ -113,11 +121,26 @@ const addRole = ()=> {
         message: 'What role would you like to add'
       },
       {
-        name: 'salery',
+        name: 'salary',
         type: 'input',
         message: 'What is the salary?'
       },
     ])
+    .then((answer) => {
+      connection.query(
+        'INSERT INTO department SET ?',
+        {
+          title: answer.title,
+          salary: answer.salary
+        },
+        (err) => {
+          if (err) throw err;
+          console.log('You have been added to the employee database');
+          // re-prompt the user for if they want to do anything else
+          init();
+        }
+      )
+    })
 }
 
 const addDepartment = () => {
