@@ -32,9 +32,11 @@ function init() {
     .then(function(response) {
       if (response.action === "add department") {
         console.log("Hey add department");
+        addDepartment();
       }
       else if (response.action === "add role") {
         console.log("Hey add role");
+        addRole();
       }
       else if (response.action === "add employee") {
         console.log("Hey add employee");
@@ -100,6 +102,22 @@ function init() {
 //     // logs the actual query being run
 //     console.log(query.sql);
 //   };
+
+const addRole = ()=> {
+  inquirer
+    .prompt([
+      {
+        name: 'title',
+        type: 'input',
+        message: 'What role would you like to add'
+      },
+      {
+        name: 'salery',
+        type: 'input',
+        message: 'What is the salary?'
+      },
+    ])
+}
 
 const addDepartment = () => {
   inquirer
