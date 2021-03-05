@@ -132,7 +132,7 @@ const addDepartment = () => {
       connection.query(
         'INSERT INTO department SET ?',
         {
-          department_name: answer.name
+          department_name: answer.department_name
         },
         (err) => {
           if (err) throw err;
