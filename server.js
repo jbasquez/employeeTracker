@@ -101,6 +101,31 @@ function init() {
 //     console.log(query.sql);
 //   };
 
+const addDepartment = () => {
+  inquirer
+    .prompt([
+      {
+        name: 'name',
+        type: 'input',
+        message: 'What is the name of the department?'
+      }
+    ])
+    .then((answer) => {
+      connection.query(
+        'INSERT INTO department SET ?',
+        {
+          department_name: answer.name
+        },
+        (err) => {
+          if (err) throw err;
+          console.log('You have been added to the employee database');
+          // re-prompt the user for if they want to do anything else
+          init();
+        }
+      )
+    })
+}
+
 const createEmployee = () => {
   inquirer
     .prompt([
@@ -143,21 +168,3 @@ const createEmployee = () => {
       )
     })
 }
-// {
-//     console.log('Creating new employee \n');
-//     const query = connection.query(
-//         //
-//       'INSERT INTO employee SET ?',
-//       {
-//         first_name: 'jack',
-//         last_name: 'Rocky',
-//         role_id: 50,
-//         manager_id: 50
-//       },
-//       (err, res) => {
-//         if (err) throw err;
-//         console.log(`${res.affectedRows} product inserted!\n`);
-//         // Call updateProduct AFTER the INSERT completes
-//         updateEmployee();
-//       }
-//     )};}
